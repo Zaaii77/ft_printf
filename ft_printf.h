@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:35:10 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/08 16:53:12 by lowatell         ###   ########.fr       */
+/*   Updated: 2024/10/08 22:25:49 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@
 
 int	ft_putchar(int c);
 int	ft_putstr(char *str);
-int	ft_putnbr(long nbr);
+int	ft_putnbase(long nbr, char *str);
 int	ft_putunbr(unsigned int nbr);
 int	ft_nbr_len(int nbr);
-int	ft_print_address(void *p);
-int	ft_min_hexa(long nbr);
-int	ft_caps_hexa(long nbr);
+int	ft_print_address(void *ptr, char *str);
 
 #endif

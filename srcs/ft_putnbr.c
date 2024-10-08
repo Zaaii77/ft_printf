@@ -6,31 +6,30 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:12:48 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/08 16:53:51 by lowatell         ###   ########.fr       */
+/*   Updated: 2024/10/09 01:07:33 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_putnbr(long nbr)
+int	ft_putnbase(long nbr, char *str)
 {
 	int	len;
+	int	size;
 	
+	size = ft_strlen(str);
 	len = ft_nbr_len(nbr);
 	if (nbr < 0)
 	{
 		nbr = nbr * -1;
-		write(1, "-", 1);
+		len += ft_putchar('-');
 	}
-	if (nbr > 9)
+	if (nbr > size)
 	{
-		ft_putnbr(nbr / 10);
-		ft_putnbr(nbr % 10);
+		ft_putnbase(nbr / size, str);
+		ft_putnbase(nbr % size, str);
 	}
-	if (nbr < 10)
-	{
-		nbr += 48;
-		write(1, &nbr, 1);
-	}
+	if (nbr < size)
+		ft_putchar(str[nbr % size]);
 	return (len);
 }
