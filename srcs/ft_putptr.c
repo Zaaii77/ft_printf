@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunbr.c                                       :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 00:11:53 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/08 16:52:51 by lowatell         ###   ########.fr       */
+/*   Created: 2024/10/10 18:54:24 by lowatell          #+#    #+#             */
+/*   Updated: 2024/10/10 19:26:45 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_putunbr(unsigned int nbr)
+void	ft_putptr(size_t nbr, char *str)
 {
-	int	len;
-	
-	len = ft_nbr_len(nbr);
+	size_t	size;
+
+	size = ft_strlen(str);
 	if (nbr < 0)
 	{
 		nbr = nbr * -1;
-		write(1, "-", 1);
+		ft_putchar('-');
 	}
-	if (nbr > 9)
+	if (nbr >= size)
 	{
-		ft_putunbr(nbr / 10);
-		ft_putunbr(nbr % 10);
+		ft_putptr(nbr / size, str);
+		ft_putptr(nbr % size, str);
 	}
-	if (nbr < 10)
-	{
-		nbr += 48;
-		write(1, &nbr, 1);
-	}
-	return (len);
+	if (nbr < size)
+		ft_putchar(str[nbr % size]);
 }

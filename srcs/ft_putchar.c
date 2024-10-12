@@ -6,13 +6,13 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 09:09:15 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/08 16:51:35 by lowatell         ###   ########.fr       */
+/*   Updated: 2024/10/10 19:31:54 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_putchar(int c)
+size_t	ft_putchar(int c)
 {
 	write(1, &c, 1);
 	return (1);

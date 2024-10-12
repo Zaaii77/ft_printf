@@ -6,21 +6,23 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:35:10 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/08 22:25:49 by lowatell         ###   ########.fr       */
+/*   Updated: 2024/10/10 19:32:02 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "libft/libft.h"
 # include <stdarg.h>
+# include <unistd.h>
+# include "srcs/libft/libft.h"
 
-int	ft_putchar(int c);
-int	ft_putstr(char *str);
-int	ft_putnbase(long nbr, char *str);
-int	ft_putunbr(unsigned int nbr);
-int	ft_nbr_len(int nbr);
-int	ft_print_address(void *ptr, char *str);
+size_t		ft_putchar(int c);
+size_t		ft_putstr(char *str);
+size_t		ft_putnbase(ssize_t nbr, char *str);
+size_t		ft_nbr_len(long nbr, char *str);
+size_t		ft_print_address(void *ptr, char *str);
+void		ft_putptr(size_t nbr, char *str);
+int			ft_printf(const char *str, ...);
 
 #endif

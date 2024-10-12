@@ -6,15 +6,30 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:18:48 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/08 22:26:11 by lowatell         ###   ########.fr       */
+/*   Updated: 2024/10/10 19:26:43 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_print_address(void *ptr, char *str)
+size_t	ft_print_address(void *ptr, char *str)
 {
-	(void)ptr;
-	(void)str;
-	return (0);
+	size_t		len;
+	size_t		n;
+	size_t		base;
+
+	if (!ptr)
+		return (ft_putstr("0x0"));
+	if (!str)
+		return (0);
+	base = ft_strlen(str);
+	n = (size_t)ptr;
+	len = ft_putstr("0x");
+	ft_putptr(n, str);
+	while (n > 0)
+	{
+		n /= base;
+		len++;
+	}
+	return (len);
 }

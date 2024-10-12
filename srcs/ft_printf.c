@@ -6,33 +6,32 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:57:37 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/09 01:07:51 by lowatell         ###   ########.fr       */
+/*   Updated: 2024/10/10 19:33:14 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
-#include <stdio.h>
 
-int	ft_type(char c, va_list *args)
+size_t	ft_type(char c, va_list *args)
 {
 	if (c == 's')
-		return ft_putstr(va_arg(*args, char *));
+		return (ft_putstr(va_arg(*args, char *)));
 	else if (c == 'c')
 		return (ft_putchar(va_arg(*args, int)));
 	else if (c == 'd' || c == 'i')
 		return (ft_putnbase(va_arg(*args, int), "0123456789"));
 	else if (c == 'u')
-		return (ft_putunbr(va_arg(*args, unsigned int)));
+		return (ft_putnbase(va_arg(*args, unsigned int), "0123456789"));
 	else if (c == '%')
 		return (ft_putchar('%'));
 	else if (c == 'p')
 		return (ft_print_address(va_arg(*args, void *), "0123456789abcdef"));
 	else if (c == 'X')
-		return (ft_putnbase(va_arg(*args, long), "0123456789ABCDEF"));
+		return (ft_putnbase(va_arg(*args, unsigned int), "0123456789ABCDEF"));
 	else if (c == 'x')
-		return (ft_putnbase(va_arg(*args, long), "0123456789abcdef"));
+		return (ft_putnbase(va_arg(*args, unsigned int), "0123456789abcdef"));
 	else
-		return(-1);
+		return (ft_putchar(c));
 }
 
 int	ft_printf(const char *str, ...)
@@ -57,12 +56,4 @@ int	ft_printf(const char *str, ...)
 	}
 	va_end(args);
 	return (count);
-}
-int	main()
-{
-	char	*a = "test";
-	int		i = 42;
-	
-	printf("te%pt\n", (void *)a);
-	ft_printf("te%Xt", i);
 }

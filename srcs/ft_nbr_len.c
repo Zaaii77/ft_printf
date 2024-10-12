@@ -6,16 +6,18 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 10:05:35 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/09 01:08:13 by lowatell         ###   ########.fr       */
+/*   Updated: 2024/10/10 19:01:26 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_nbr_len(int nbr)
+size_t	ft_nbr_len(long nbr, char *str)
 {
-	int	count;
+	size_t	count;
+	size_t	len;
 
+	len = ft_strlen(str);
 	count = 0;
 	if (nbr < 0)
 	{
@@ -26,7 +28,7 @@ int	ft_nbr_len(int nbr)
 		return (1);
 	while (nbr > 0)
 	{
-		nbr /= 10;
+		nbr /= len;
 		count++;
 	}
 	return (count);
