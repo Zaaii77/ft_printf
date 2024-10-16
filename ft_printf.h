@@ -6,7 +6,7 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:35:10 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/10 19:32:02 by lowatell         ###   ########.fr       */
+/*   Updated: 2024/10/16 11:36:39 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-# include "srcs/libft/libft.h"
+# include "libft/libft.h"
 
 size_t		ft_putchar(int c);
 size_t		ft_putstr(char *str);
