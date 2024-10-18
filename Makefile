@@ -6,7 +6,7 @@
 #    By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/20 13:23:46 by lowatell          #+#    #+#              #
-#    Updated: 2024/10/16 17:19:55 by lowatell         ###   ########.fr        #
+#    Updated: 2024/10/18 13:53:06 by lowatell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,13 +30,15 @@ OBJS = $(addprefix $(SRC_DIR)/, $(SRCS:.c=.o))
 AR_LIBFT = $(addprefix $(LIBFT_DIR)/, $(LIBFT))
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCS)
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCS) -I $(libft)/incdd
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@make bonus -C $(LIBFT_DIR)
-	@$(AR) $(NAME) $(OBJS) $(AR_LIBFT)
+	@cp $(AR_LIBFT) .
+	@mv $(LIBFT) $(NAME)
+	@$(AR) $(NAME) $(OBJS)
 
 clean:
 	@make clean -C $(LIBFT_DIR)
