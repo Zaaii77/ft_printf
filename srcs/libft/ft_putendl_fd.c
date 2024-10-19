@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 11:12:48 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/19 13:11:12 by lowatell         ###   ########.fr       */
+/*   Created: 2024/09/07 14:25:31 by lowatell          #+#    #+#             */
+/*   Updated: 2024/10/18 17:43:27 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "libft.h"
 
-size_t	ft_putnbase(ssize_t nbr, char *str)
+void	ft_putendl_fd(char *s, int fd)
 {
-	size_t	len;
-	ssize_t	size;
+	size_t	i;
 
-	size = ft_strlen(str);
-	len = ft_nbr_len(nbr, str);
-	if (nbr < 0)
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i])
 	{
-		nbr = nbr * -1;
-		ft_putchar('-');
+		ft_putchar_fd(s[i], fd);
+		i++;
 	}
-	if (nbr >= size)
-	{
-		ft_putnbase(nbr / size, str);
-		ft_putnbase(nbr % size, str);
-	}
-	if (nbr < size)
-		ft_putchar(str[nbr % size]);
-	return (len);
+	write(fd, "\n", 1);
 }

@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 11:12:48 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/19 13:11:12 by lowatell         ###   ########.fr       */
+/*   Created: 2024/09/06 04:13:53 by lowatell          #+#    #+#             */
+/*   Updated: 2024/10/18 17:43:42 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "libft.h"
 
-size_t	ft_putnbase(ssize_t nbr, char *str)
+char	*ft_strdup(const char *s1)
 {
-	size_t	len;
-	ssize_t	size;
+	size_t	i;
+	size_t	j;
+	char	*s2;
 
-	size = ft_strlen(str);
-	len = ft_nbr_len(nbr, str);
-	if (nbr < 0)
+	i = 0;
+	j = 0;
+	while (s1[j])
+		j++;
+	s2 = (char *)malloc((sizeof(char) * j) + 1);
+	if (!s2)
+		return (NULL);
+	while (s1[i])
 	{
-		nbr = nbr * -1;
-		ft_putchar('-');
+		s2[i] = s1[i];
+		i++;
 	}
-	if (nbr >= size)
-	{
-		ft_putnbase(nbr / size, str);
-		ft_putnbase(nbr % size, str);
-	}
-	if (nbr < size)
-		ft_putchar(str[nbr % size]);
-	return (len);
+	s2[i] = '\0';
+	return (s2);
 }

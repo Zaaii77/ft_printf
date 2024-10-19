@@ -6,11 +6,11 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 23:37:36 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/10 19:32:36 by lowatell         ###   ########.fr       */
+/*   Updated: 2024/10/19 13:11:16 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../inc/ft_printf.h"
 
 size_t	ft_putstr(char *str)
 {

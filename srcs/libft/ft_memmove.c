@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 11:12:48 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/19 13:11:12 by lowatell         ###   ########.fr       */
+/*   Created: 2024/08/20 23:07:15 by lowatell          #+#    #+#             */
+/*   Updated: 2024/10/18 17:43:16 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "libft.h"
 
-size_t	ft_putnbase(ssize_t nbr, char *str)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	len;
-	ssize_t	size;
+	size_t	i;
 
-	size = ft_strlen(str);
-	len = ft_nbr_len(nbr, str);
-	if (nbr < 0)
+	if (dest == src)
+		return (dest);
+	if (dest > src)
 	{
-		nbr = nbr * -1;
-		ft_putchar('-');
+		i = n - 1;
+		while (i >= 0 && i < n)
+		{
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			i--;
+		}
 	}
-	if (nbr >= size)
+	else
 	{
-		ft_putnbase(nbr / size, str);
-		ft_putnbase(nbr % size, str);
+		i = 0;
+		while (i < n)
+		{
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			i++;
+		}
 	}
-	if (nbr < size)
-		ft_putchar(str[nbr % size]);
-	return (len);
+	return (dest);
 }

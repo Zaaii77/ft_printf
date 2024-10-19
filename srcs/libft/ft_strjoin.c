@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 11:12:48 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/19 13:11:12 by lowatell         ###   ########.fr       */
+/*   Created: 2024/09/06 14:18:39 by lowatell          #+#    #+#             */
+/*   Updated: 2024/10/18 17:43:48 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "libft.h"
 
-size_t	ft_putnbase(ssize_t nbr, char *str)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	len;
-	ssize_t	size;
+	char	*str;
+	size_t	i;
+	size_t	j;
 
-	size = ft_strlen(str);
-	len = ft_nbr_len(nbr, str);
-	if (nbr < 0)
+	if (!s1 || !s2)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	if (!str)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s1[i])
 	{
-		nbr = nbr * -1;
-		ft_putchar('-');
+		str[j] = s1[i++];
+		j++;
 	}
-	if (nbr >= size)
+	i = 0;
+	while (s2[i])
 	{
-		ft_putnbase(nbr / size, str);
-		ft_putnbase(nbr % size, str);
+		str[j] = s2[i++];
+		j++;
 	}
-	if (nbr < size)
-		ft_putchar(str[nbr % size]);
-	return (len);
+	str[j] = '\0';
+	return (str);
 }

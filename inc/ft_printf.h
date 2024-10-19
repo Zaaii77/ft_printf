@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 11:12:48 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/19 13:11:12 by lowatell         ###   ########.fr       */
+/*   Created: 2024/10/08 10:35:10 by lowatell          #+#    #+#             */
+/*   Updated: 2024/10/19 13:15:43 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-size_t	ft_putnbase(ssize_t nbr, char *str)
-{
-	size_t	len;
-	ssize_t	size;
+# include <stdarg.h>
+# include <unistd.h>
+# include "../srcs/libft/libft.h"
 
-	size = ft_strlen(str);
-	len = ft_nbr_len(nbr, str);
-	if (nbr < 0)
-	{
-		nbr = nbr * -1;
-		ft_putchar('-');
-	}
-	if (nbr >= size)
-	{
-		ft_putnbase(nbr / size, str);
-		ft_putnbase(nbr % size, str);
-	}
-	if (nbr < size)
-		ft_putchar(str[nbr % size]);
-	return (len);
-}
+size_t		ft_putchar(int c);
+size_t		ft_putstr(char *str);
+size_t		ft_putnbase(ssize_t nbr, char *str);
+size_t		ft_nbr_len(long nbr, char *str);
+size_t		ft_print_address(void *ptr, char *str);
+void		ft_putptr(size_t nbr, char *str);
+int			ft_printf(const char *str, ...);
+
+#endif

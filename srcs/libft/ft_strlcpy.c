@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 11:12:48 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/19 13:11:12 by lowatell         ###   ########.fr       */
+/*   Created: 2024/08/20 23:54:44 by lowatell          #+#    #+#             */
+/*   Updated: 2024/10/18 17:43:55 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "libft.h"
 
-size_t	ft_putnbase(ssize_t nbr, char *str)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t	len;
-	ssize_t	size;
+	size_t	i;
+	size_t	src_len;
 
-	size = ft_strlen(str);
-	len = ft_nbr_len(nbr, str);
-	if (nbr < 0)
+	src_len = ft_strlen(src);
+	i = 0;
+	if (size == 0)
+		return (src_len);
+	while (src[i] && i < (size - 1))
 	{
-		nbr = nbr * -1;
-		ft_putchar('-');
+		dst[i] = src[i];
+		i++;
 	}
-	if (nbr >= size)
-	{
-		ft_putnbase(nbr / size, str);
-		ft_putnbase(nbr % size, str);
-	}
-	if (nbr < size)
-		ft_putchar(str[nbr % size]);
-	return (len);
+	dst[i] = '\0';
+	if (size <= src_len)
+		return (src_len);
+	return (i);
 }

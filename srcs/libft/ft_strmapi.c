@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 10:35:10 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/16 11:36:39 by lowatell         ###   ########.fr       */
+/*   Created: 2024/09/07 04:22:10 by lowatell          #+#    #+#             */
+/*   Updated: 2024/10/18 17:44:01 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include "libft/libft.h"
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char			*str;
+	unsigned int	i;
 
-size_t		ft_putchar(int c);
-size_t		ft_putstr(char *str);
-size_t		ft_putnbase(ssize_t nbr, char *str);
-size_t		ft_nbr_len(long nbr, char *str);
-size_t		ft_print_address(void *ptr, char *str);
-void		ft_putptr(size_t nbr, char *str);
-int			ft_printf(const char *str, ...);
-
-#endif
+	if (!s || !f)
+		return (NULL);
+	i = 0;
+	while (s[i])
+		i++;
+	str = (char *)malloc(sizeof(char) * (i + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}

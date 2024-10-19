@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 11:12:48 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/19 13:11:12 by lowatell         ###   ########.fr       */
+/*   Created: 2024/09/04 18:42:37 by lowatell          #+#    #+#             */
+/*   Updated: 2024/10/18 17:44:11 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "libft.h"
 
-size_t	ft_putnbase(ssize_t nbr, char *str)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	len;
-	ssize_t	size;
+	ssize_t		i;
 
-	size = ft_strlen(str);
-	len = ft_nbr_len(nbr, str);
-	if (nbr < 0)
+	i = ft_strlen(s);
+	if ((char)c == '\0')
+		return ((char *)s + i);
+	i--;
+	while (i >= 0)
 	{
-		nbr = nbr * -1;
-		ft_putchar('-');
+		if ((char)c == s[i])
+			return ((char *)s + i);
+		i--;
 	}
-	if (nbr >= size)
-	{
-		ft_putnbase(nbr / size, str);
-		ft_putnbase(nbr % size, str);
-	}
-	if (nbr < size)
-		ft_putchar(str[nbr % size]);
-	return (len);
+	return (NULL);
 }

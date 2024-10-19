@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 11:12:48 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/19 13:11:12 by lowatell         ###   ########.fr       */
+/*   Created: 2024/09/06 03:19:20 by lowatell          #+#    #+#             */
+/*   Updated: 2024/10/18 17:44:08 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "libft.h"
 
-size_t	ft_putnbase(ssize_t nbr, char *str)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	len;
-	ssize_t	size;
+	size_t	i;
+	size_t	j;
 
-	size = ft_strlen(str);
-	len = ft_nbr_len(nbr, str);
-	if (nbr < 0)
+	i = 0;
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (haystack[i] && i < len)
 	{
-		nbr = nbr * -1;
-		ft_putchar('-');
+		j = 0;
+		while (i + j < len && haystack[i + j] == needle[j])
+		{
+			if (needle[j + 1] == '\0')
+				return ((char *)haystack + i);
+			j++;
+		}
+		i++;
 	}
-	if (nbr >= size)
-	{
-		ft_putnbase(nbr / size, str);
-		ft_putnbase(nbr % size, str);
-	}
-	if (nbr < size)
-		ft_putchar(str[nbr % size]);
-	return (len);
+	return (NULL);
 }

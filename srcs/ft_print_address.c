@@ -6,11 +6,11 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:18:48 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/10 19:26:43 by lowatell         ###   ########.fr       */
+/*   Updated: 2024/10/19 13:11:06 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../inc/ft_printf.h"
 
 size_t	ft_print_address(void *ptr, char *str)
 {

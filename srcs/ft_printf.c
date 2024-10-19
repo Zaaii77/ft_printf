@@ -6,11 +6,11 @@
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:57:37 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/10 19:33:14 by lowatell         ###   ########.fr       */
+/*   Updated: 2024/10/19 13:11:08 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../inc/ft_printf.h"
 
 size_t	ft_type(char c, va_list *args)
 {

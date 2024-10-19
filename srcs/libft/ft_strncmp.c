@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lowatell <lowatell@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 11:12:48 by lowatell          #+#    #+#             */
-/*   Updated: 2024/10/19 13:11:12 by lowatell         ###   ########.fr       */
+/*   Created: 2024/09/04 18:31:30 by lowatell          #+#    #+#             */
+/*   Updated: 2024/10/18 17:44:04 by lowatell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "libft.h"
 
-size_t	ft_putnbase(ssize_t nbr, char *str)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	len;
-	ssize_t	size;
+	size_t			i;
 
-	size = ft_strlen(str);
-	len = ft_nbr_len(nbr, str);
-	if (nbr < 0)
-	{
-		nbr = nbr * -1;
-		ft_putchar('-');
-	}
-	if (nbr >= size)
-	{
-		ft_putnbase(nbr / size, str);
-		ft_putnbase(nbr % size, str);
-	}
-	if (nbr < size)
-		ft_putchar(str[nbr % size]);
-	return (len);
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n - 1)
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
